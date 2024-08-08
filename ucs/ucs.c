@@ -1,4 +1,3 @@
-#include <cstdio>
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -59,6 +58,7 @@ int enqueue(struct queue *q, int val) {
 	}
 	q->vals[(q->front + q->size) % q->cap] = val;
 	q->size++;
+	return 0;
 }
 
 int dequeue(struct queue *q) {
