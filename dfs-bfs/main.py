@@ -5,8 +5,8 @@ from os import sep
 parser = ArgumentParser()
 parser.add_argument("alg", choices=("bfs", "dfs"), help="search algorithm")
 parser.add_argument("file", help="Input graph")
-parser.add_argument("-s", help="start", required=True)
-parser.add_argument("-e", help="end", required=True)
+parser.add_argument("-s", "--start", help="start", required=True)
+parser.add_argument("-e", "--end", help="end", required=True)
 
 
 def get_input(file):
@@ -57,7 +57,7 @@ def dfs(graph, start, end):
 if __name__ == "__main__":
     args = parser.parse_args()
     graph = get_input(args.file)
-    if args.s not in graph:
+    if args.start not in graph:
         print("Start point is not valid")
         exit(1)
     if args.alg == "bfs":
@@ -65,5 +65,5 @@ if __name__ == "__main__":
     else:
         alg = dfs
 
-    path = alg(graph, args.s, args.e)
+    path = alg(graph, args.start, args.end)
     print(*path, sep=" -> ")
